@@ -1,0 +1,2562 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.1/dist/aframe-extras.min.js"></script>
+    <script src="Classes/tree.js"></script>
+    <script src="Classes/soul.js"></script>
+    <script src="Classes/element.js"></script>
+    <script src="Classes/flying sword.js"></script>
+    <script src="Classes/random.js"></script>
+    <script src="Classes/functions.js"></script>
+    <script src="a-script/script.js"></script>
+    
+  </head>
+  <body>
+    <a-scene>
+
+      <!--Flying Ability-->
+      <a-entity id="rig"
+          movement-controls="fly: true; speed: .2">
+        <a-entity camera
+            position="10000 1001 0"
+            look-controls><a-cursor></a-cursor></a-entity>
+      </a-entity>
+      
+      <!--3D models-->
+      <a-assets>
+        <a-asset-item id="alien_plant" src="alien_plant/scene.gltf"></a-asset-item>
+        <a-asset-item id="alien_plants" src="alien_plants/scene.gltf"></a-asset-item>
+        <a-asset-item id="sun" src="sun/scene.gltf"></a-asset-item>
+        <a-asset-item id="bighorn_sheep" src="bighorn_sheep/scene.gltf"></a-asset-item>
+        <a-asset-item id="Chinese_gate" src="Chinese_gate/scene.gltf"></a-asset-item>
+        <a-asset-item id="rabbit_rigged" src="rabbit_rigged/scene.gltf"></a-asset-item>
+        <a-asset-item id="mars" src="mars/scene.gltf"></a-asset-item>
+        <a-asset-item id="neptune" src="neptune/scene.gltf"></a-asset-item>
+        <a-asset-item id="jupiter" src="jupiter/scene.gltf"></a-asset-item>
+        <a-asset-item id="saturn" src="saturn/scene.gltf"></a-asset-item>
+        <a-asset-item id="earthss" src="earth/scene.gltf"></a-asset-item>
+        <a-asset-item id="park" src="Chinese_park/scene.gltf"></a-asset-item>
+        <a-asset-item id="dragon" src="dragon_statue/scene.gltf"></a-asset-item>
+      </a-assets>
+      
+      <!--Planets-->
+      
+      <a-gltf-model src="#mars" position="1500 1500 -2500" scale="750 750 750"></a-gltf-model>
+      <a-gltf-model src="#neptune" position="1500 -1500 -1500" scale="7 7 7"></a-gltf-model>
+      <a-gltf-model src="#jupiter" position="-1500 -1500 1500" scale="7 7 7"></a-gltf-model>     
+      <a-gltf-model src="#saturn" position="-1500 1500 0" scale="5 5 5"></a-gltf-model>
+      <a-gltf-model src="#earthss" position="-1500 -2500 0" scale="1 1 1"></a-gltf-model>
+      <a-gltf-model src="#sun" position="-200 2250 0" scale="7 7 7"></a-gltf-model>
+      <!--Create a portal behind the teleportation location to go back to the lobby-->
+
+      <!--Sect-->
+      <a-gltf-model src="#Chinese_gate" position="-55 0 -75" rotation="0 90 0" scale=".35 .35 .35"></a-gltf-model>
+      <a-gltf-model src="#park" position="0 -250 0"  scale="1 1 1"></a-gltf-model>
+      <a-gltf-model src="#dragon" position="-35 5 -100"  scale="2 2 2" rotation="0 90 0"></a-gltf-model>
+      <a-gltf-model src="#dragon" position="-35 5 -50"  scale="2 2 2" rotation="0 90 0"></a-gltf-model>
+      
+      
+      <!--Divine-->
+      <a-gltf-model src="#bighorn_sheep" position="0 2001 -2" rotation="0 90 0" scale=".1 .1 .1"></a-gltf-model>
+      <a-gltf-model src="#bighorn_sheep" position="-2 2001 -4" rotation="0 90 0" scale=".1 .1 .1"></a-gltf-model>
+      <a-gltf-model src="#rabbit_rigged" position="10 2001 -10" rotation="0 90 0" scale=".05 .05 .05" animation-mixer></a-gltf-model>
+      <a-gltf-model src="#rabbit_rigged" position="5 2001 -7" rotation="0 0 0" scale=".05 .05 .05" animation-mixer></a-gltf-model>
+      <a-gltf-model src="#rabbit_rigged" position="0 2001 -7" rotation="0 180 0" scale=".05 .05 .05" animation-mixer></a-gltf-model>
+      <a-gltf-model src="#alien_plant" position="-6 2001 -6" rotation="0 90 0" scale=".5 .5 .5"></a-gltf-model>
+      <a-gltf-model src="#alien_plants" position="-6 2001 6" rotation="0 90 0" scale=".4 .4 .4"></a-gltf-model>
+      
+
+      <!--Lobby-->
+      <a-entity id="lobby" position="10000 1001 0">
+        <a-box src="future.jpg" position="0 -1 0" height=".25" width="5" depth="5" ></a-box>
+        <a-box src="future.jpg" position="0 3 0" height=".25" width="5" depth="5" ></a-box>
+        <a-box src="future.jpg" position="0 1 -2.5" height="5" width="5" depth=".25" ></a-box>
+        <a-box src="future.jpg" position="0 1 2.5" height="5" width="5" depth=".25" ></a-box>
+        <a-box src="future.jpg" position="-2.5 1 0" height="5" width="5" depth=".25" rotation="0 90 0"></a-box>
+        <a-box src="future.jpg" position="2.5 1 0" height="5" width="5" depth=".25" rotation="0 90 0"></a-box>
+
+        <a-image id="mundane" src="Mundane.png" height="1" width="2" position="-1 .75 -2.25"></a-image>
+        <a-image id="divine" src="Divine.png" height="1" width="2" position="-1 1.75 -2.25"></a-image>
+        <a-image id="voids" src="void.png" height="1" width="2" position="-1 -.25 -2.25"></a-image>
+
+        <a-text value="CHOOSE" position="1 1.75 -2.25"></a-text>
+        <a-text value="YOUR" position="1.1 .75 -2.25"></a-text>
+        <a-text value="REALM" position="1 -.25 -2.25"></a-text>
+
+      </a-entity>
+
+      <!--Martial God Asura (Azure Dragon Sect)-->
+      <a-entity>
+        <!--Teleportation to the Lobby-->
+        <a-image id="portal12" position="100 30 -40" src="portal12.png" width="50" height="50"></a-image>
+        <a-image id="portal13" position="0 0 2800" src="portal13.png" width="75" height="75"></a-image>
+        <a-image id="portal14" position="100 30 -120" src="portal14.png" width="50" height="50"></a-image>
+        <a-image id="portal15" position="-15 -249 105" src="portal15.png" width="15" height="15"></a-image>
+        <a-plane src="stone wall.png" position="0 -251 0" height="250" width="250" rotation="-90 0 0" repeat="250 250"></a-plane>
+        <a-plane src="water.png" position="0 -250.3 0" height="250" width="250" rotation="-90 0 0" repeat="250 250"></a-plane>
+        <a-entity id="soundPlayer" sound="src: sound.wav; volume: 10"></a-entity>
+        <a-entity id="soundPlayer1" sound="src: sound1.wav; volume: 10"></a-entity>
+        <a-entity id="soundPlayer2" sound="src: sound2.wav; volume: 10"></a-entity>
+        <a-entity id="soundPlayer3" sound="src: sound3.wav; volume: 10"></a-entity>
+        <a-entity id="soundPlayer4" sound="src: sound4.wav; volume: 10"></a-entity>
+        <a-entity id="soundPlayer5" sound="src: sound5.wav; volume: 10"></a-entity>
+        <a-entity id="soundPlayer6" sound="src: sound6.wav; volume: 10"></a-entity>
+        <a-entity id="soundPlayer7" sound="src: sound7.wav; volume: 10"></a-entity>
+      
+
+        <!--Starting Area-->
+        <a-entity>
+          <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" src="wood.png" repeat="10 10"></a-plane>
+          <a-box position="0 3 4.5" rotation="0 0 0" width="10" height="7" src="wood.png"></a-box>
+          <a-box position="4.5 3 0" rotation="0 90 0" width="10" height="7" src="wood.png"></a-box>
+          <a-box position="-4.5 3 0" rotation="0 90 0" width="10" height="7" src="wood.png"></a-box>
+          <a-box position="0 7 0" rotation="90 0 0" width="10" height="10" src="wood.png"></a-box>
+          
+          <!--Signs-->
+          <a-entity>
+            <a-plane position="0 3.2 3.75" rotation="0 180 0" width="7" height="5" src="intro.png" ></a-plane>
+            <a-plane position="-3.9 3.2 -.2.5" rotation="0 90 0" width="8" height="5" src="light novel.png" ></a-plane>
+            <a-plane position="3.9 3.2 -.2.5" rotation="0 -90 0" width="8" height="5" src="azure dragon school.png" ></a-plane>
+          </a-entity>
+
+          <!--Bridge-->
+          <a-entity>
+            <!--Flooring-->
+            <a-box position="0 -.2 -10" rotation="90 0 0" depth=".3" width="7" height="22" src="stone1.png" repeat="15 40"></a-box>
+
+            <!--Left Hand Railing-->
+            <a-entity>
+              <a-box position="-3.2 .5 -5.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -6.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -7.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -8.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -9.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -10.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -11.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -12.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -13.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -14.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -15.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -16.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -17.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -18.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -19.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -20.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+
+              <a-cylinder position="-3.2 .5 -13" height="15" radius=".15" rotation="90 0 0" src="gold.png" repeat="10 75"></a-cylinder>
+              <a-box position="-3.2 1.2 -13" width=".5" depth=".5" height="16" rotation="90 0 0" src="gold.png" repeat="5 110"></a-box>
+              
+            </a-entity>
+            <!--Left Hand Railing-->
+            <a-entity position="6.4 0 0">
+              <a-box position="-3.2 .5 -5.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -6.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -7.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -8.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -9.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -10.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -11.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -12.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -13.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -14.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -15.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -16.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -17.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -18.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -19.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+              <a-box position="-3.2 .5 -20.5" width=".3" depth=".3" height="1.2" src="gold.png"></a-box>
+
+              <a-cylinder position="-3.2 .5 -13" height="15" radius=".15" rotation="90 0 0" src="gold.png" repeat="10 75"></a-cylinder>
+              <a-box position="-3.2 1.2 -13" width=".5" depth=".5" height="16" rotation="90 0 0" src="gold.png" repeat="5 110"></a-box>
+              
+            </a-entity>
+
+          </a-entity>
+
+          <!--Main Flooring-->
+          <a-entity>
+            <a-box position="0 -.2 -76.5" rotation="90 0 0" depth=".3" width="150" height="111" src="stone2.png" repeat="150 111"></a-box>
+          </a-entity>
+
+        </a-entity>
+
+        <!--Sect Entrance-->
+        <a-entity>
+          <!--Right pillars-->
+          <a-entity>
+            <a-box position="12 12.2 -25" depth="5" height="25" width="7.5" src="wood2.png"></a-box>
+
+            <!--Windows-->
+            <a-entity>
+              <a-image src="window.png" height="3" width="3" position="14 16.5 -22.3" ></a-image>
+              <a-image src="window.png" height="3" width="3" position="10.25 16.5 -22.3" ></a-image>
+              <a-image src="window.png" height="6" width="3" position="12 8 -22.1" rotation="0 0 90" ></a-image>
+            </a-entity>
+
+            <!--Right Side Tiles-->
+            <a-entity>
+
+              <!--Top Small Tiles(front)-->
+              <a-entity>
+                  <a-box position="12 19 -21.5" rotation="-35 0 0" depth=".2" width="7.5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="13 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="14 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="11 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="10 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="9 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="8 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="15 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="16 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+              </a-entity>
+
+              <!--Top Small Tiles(left)-->
+              <a-entity position="-4.75 0 -3.5">
+                  <a-box position="12 19 -21.5" rotation="-35 -90 0" depth=".2" width="5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -19.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -20.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -22.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -23.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  
+              </a-entity>
+
+              <!--Top Small Tiles(right)-->
+              <a-entity position="4.75 0 -3.5">
+                  <a-box position="12 19 -21.5" rotation="-35 90 0" depth=".2" width="5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -19.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -20.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -22.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -23.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  
+              </a-entity>
+
+              <!--Bottom Small Tiles-->
+              <a-entity position="0 -7.5 0">
+                  <a-box position="12 19 -21.5" rotation="-35 0 0" depth=".2" width="7.5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="13 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="14 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="11 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="10 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="9 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="8 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="15 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="16 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+              </a-entity>
+
+              <!--Bottom Small Tiles(left)-->
+              <a-entity position="-4.75 -7.5 -3.5">
+                  <a-box position="12 19 -21.5" rotation="-35 -90 0" depth=".2" width="5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -19.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -20.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -22.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -23.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  
+              </a-entity>
+
+              <!--Bottom Small Tiles(right)-->
+              <a-entity position="4.75 -7.5 -3.5">
+                  <a-box position="12 19 -21.5" rotation="-35 90 0" depth=".2" width="5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -19.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -20.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -22.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -23.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  
+              </a-entity>
+
+
+              <!--Ball-->
+              <a-sphere position="12 29 -25" radius="5" src="lightning.png">
+            </a-entity>
+
+            <!--Backside-->
+            <a-entity>
+              <a-image position="12 12.2 -28" width="5" height="21" src="leave sect.png" rotation="0 180 0" color="black"></a-image>
+            </a-entity>
+
+          </a-entity>
+
+          <!--Left pillars-->
+          <a-entity>
+            <a-box position="-12 12.2 -25" depth="5" height="25" width="7.5" src="wood2.png"></a-box>
+
+            <!--Windows-->
+            <a-entity position="-24 0 0">
+              <a-image src="window.png" height="3" width="3" position="14 16.5 -22.3" ></a-image>
+              <a-image src="window.png" height="3" width="3" position="10.25 16.5 -22.3" ></a-image>
+              <a-image src="window.png" height="6" width="3" position="12 8 -22.1" rotation="0 0 90" ></a-image>
+            </a-entity>
+
+            <!--Left Side Tiles-->
+            <a-entity position="-24 0 0">
+
+              <!--Top Small Tiles(front)-->
+              <a-entity>
+                  <a-box position="12 19 -21.5" rotation="-35 0 0" depth=".2" width="7.5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="13 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="14 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="11 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="10 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="9 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="8 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="15 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="16 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+              </a-entity>
+
+              <!--Top Small Tiles(left)-->
+              <a-entity position="-4.75 0 -3.5">
+                  <a-box position="12 19 -21.5" rotation="-35 -90 0" depth=".2" width="5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -19.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -20.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -22.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -23.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  
+              </a-entity>
+
+              <!--Top Small Tiles(right)-->
+              <a-entity position="4.75 0 -3.5">
+                  <a-box position="12 19 -21.5" rotation="-35 90 0" depth=".2" width="5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -19.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -20.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -22.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -23.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  
+              </a-entity>
+
+              <!--Bottom Small Tiles-->
+              <a-entity position="0 -7.5 0">
+                  <a-box position="12 19 -21.5" rotation="-35 0 0" depth=".2" width="7.5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="13 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="14 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="11 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="10 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="9 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="8 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="15 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="16 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+              </a-entity>
+
+              <!--Bottom Small Tiles(left)-->
+              <a-entity position="-4.75 -7.5 -3.5">
+                  <a-box position="12 19 -21.5" rotation="-35 -90 0" depth=".2" width="5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -19.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -20.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -22.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -23.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  
+              </a-entity>
+
+              <!--Bottom Small Tiles(right)-->
+              <a-entity position="4.75 -7.5 -3.5">
+                  <a-box position="12 19 -21.5" rotation="-35 90 0" depth=".2" width="5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -19.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -20.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -22.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -23.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  
+              </a-entity>
+
+
+              <!--Ball-->
+              <a-sphere position="12 29 -25" radius="5" src="lightning.png">
+            </a-entity>
+
+            <!--Backside-->
+            <a-entity position="-24.5 0 0">
+              <a-image position="12.5 12.5 -28" width="5" height="21" src="safe return.png" rotation="0 180 0" color="black"></a-image>
+            </a-entity>
+
+            <!--Gates-->
+            <a-image position="-45 6.5 -29" src="front wall.png" height="20" width="60" repeat="15 1" color="#654321"></a-image>
+            <a-image position="45 6.5 -29" src="front wall.png" height="20" width="60" repeat="15 1" color="#654321"></a-image>
+
+          </a-entity>
+
+          <!--Middle Entrance-->
+          <a-entity>
+            <a-box position="-5 7 -24" height="15" width="1" depth="1" src="brown.png"></a-box>
+            <a-box position="5 7 -24" height="15" width="1" depth="1" src="brown.png"></a-box>
+            <a-box position="0 15 -24" height="5" width="14" depth="1" src="brown.png"></a-box>
+            <a-image src="sect.png" color="black" position="0 15 -23.4" height="5" width="14"></a-image>
+            <a-image src="sect.png" color="black" position="0 15 -24.7" height="5" width="14" rotation="0 180 0"></a-image>
+          </a-entity>
+
+          <!--Entrance Flower Left Side-->
+          <a-entity>
+            <a-entity position="-20 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-25 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-30 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-35 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-40 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-45 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-50 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-55 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-60 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-65 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-70 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+
+          </a-entity>
+
+          <!--Entrance Flower Right Side-->
+          <a-entity position="90 0 0">
+            <a-entity position="-20 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-25 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-30 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-35 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-40 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-45 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-50 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-55 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-60 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-65 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-70 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+
+          </a-entity>
+        </a-entity>
+
+        
+        <!--Battle Arena-->
+        <a-entity>
+          <!--Main-->
+          <a-entity>
+            <a-box position="0 1 -75" depth="50" height="3" width="50" src="arena.png"></a-box>
+            <a-box position="0 .5 -50" depth="3" height="1" width="50" src="obsidian.png"></a-box>
+            <a-box position="0 .5 -100" depth="3" height="1" width="50" src="obsidian.png"></a-box>
+            <a-box position="25 .5 -75" rotation="0 90 0" depth="3" height="1" width="50" src="obsidian.png"></a-box>
+            <a-box position="-25 .5 -75" rotation="0 90 0" depth="3" height="1" width="50" src="obsidian.png"></a-box>
+          </a-entity>
+
+          <!--Corners-->
+          <a-entity>
+            <a-cylinder position="23 7.1 -52" radius="1.5" height="15" src="water blue.png"></a-cylinder>
+            <a-cylinder position="-23 7.1 -52" radius="1.5" height="15" src="water blue.png"></a-cylinder>
+            <a-cylinder position="23 7.1 -98" radius="1.5" height="15" src="water blue.png"></a-cylinder>
+            <a-cylinder position="-23 7.1 -98" radius="1.5" height="15" src="water blue.png"></a-cylinder>
+
+            <a-box position="23 15 -52" width="5" depth="5" height=".75" src="obsidian.png"></a-box>
+            <a-box position="-23 15 -52" width="5" depth="5" height=".75" src="obsidian.png"></a-box>
+            <a-box position="23 15 -98" width="5" depth="5" height=".75" src="obsidian.png"></a-box>
+            <a-box position="-23 15 -98" width="5" depth="5" height=".75" src="obsidian.png"></a-box>
+
+            <a-cylinder position="23 16.9 -52" radius="4" height="3" src="arena gold.png"></a-cylinder>
+            <a-cylinder position="-23 16.9 -52" radius="4" height="3" src="arena gold.png"></a-cylinder>
+            <a-cylinder position="23 16.9 -98" radius="4" height="3" src="arena gold.png"></a-cylinder>
+            <a-cylinder position="-23 16.9 -98" radius="4" height="3" src="arena gold.png"></a-cylinder>
+
+            <a-box position="23 18 -52" width="10" depth="10" height="2" src="obsidian.png"></a-box>
+            <a-box position="-23 18 -52" width="10" depth="10" height="2" src="obsidian.png"></a-box>
+            <a-box position="23 18 -98" width="10" depth="10" height="2" src="obsidian.png"></a-box>
+            <a-box position="-23 18 -98" width="10" depth="10" height="2" src="obsidian.png"></a-box>
+
+            <a-octahedron id="fire" src="fire.png" radius="7" position="23 30 -52"></a-octahedron>   
+            <a-octahedron id="water" src="water.png" radius="7" position="-23 30 -52"></a-octahedron>   
+            <a-octahedron id="earth" src="earth.png" radius="7" position="-23 30 -98"></a-octahedron>   
+            <a-octahedron id="air" src="air.png" radius="7" position="23 30 -98"></a-octahedron>   
+
+          </a-entity>
+
+          <!--Fencing-->
+          <a-entity>
+            <a-entity>
+              <a-cylinder position="10 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="12 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="14 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="16 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="18 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="20 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+
+              <a-cone position="10 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="12 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="14 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="16 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="18 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="20 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+
+              <a-cylinder position="16 4.75 -52" radius=".2" height="12" src="water blue.png" rotation="0 0 90" repeat="1 12"></a-cylinder>
+              <a-cylinder position="16 3.25 -52" radius=".2" height="12" src="water blue.png" rotation="0 0 90" repeat="1 12"></a-cylinder>
+
+            </a-entity>
+
+            <a-entity position="-30 0 0">
+              <a-cylinder position="10 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="12 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="14 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="16 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="18 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="20 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+
+              <a-cone position="10 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="12 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="14 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="16 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="18 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="20 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+
+              <a-cylinder position="14 4.75 -52" radius=".2" height="12" src="water blue.png" rotation="0 0 90" repeat="1 12"></a-cylinder>
+              <a-cylinder position="14 3.25 -52" radius=".2" height="12" src="water blue.png" rotation="0 0 90" repeat="1 12"></a-cylinder>
+
+            </a-entity>
+
+            <a-entity position="0 0 -46">
+              <a-cylinder position="10 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="12 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="14 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="16 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="18 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="20 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+
+              <a-cone position="10 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="12 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="14 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="16 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="18 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="20 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+
+              <a-cylinder position="16 4.75 -52" radius=".2" height="12" src="water blue.png" rotation="0 0 90" repeat="1 12"></a-cylinder>
+              <a-cylinder position="16 3.25 -52" radius=".2" height="12" src="water blue.png" rotation="0 0 90" repeat="1 12"></a-cylinder>
+
+            </a-entity>
+
+            <a-entity position="-30 0 -46">
+              <a-cylinder position="10 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="12 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="14 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="16 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="18 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="20 4 -52" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+
+              <a-cone position="10 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="12 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="14 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="16 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="18 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="20 6 -52" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+
+              <a-cylinder position="14 4.75 -52" radius=".2" height="12" src="water blue.png" rotation="0 0 90" repeat="1 12"></a-cylinder>
+              <a-cylinder position="14 3.25 -52" radius=".2" height="12" src="water blue.png" rotation="0 0 90" repeat="1 12"></a-cylinder>
+
+            </a-entity>
+
+            <!--Rotation-->
+            <a-entity>
+              <a-cylinder position="23 4 -55" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -57" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -59" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -61" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -63" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -65" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+
+              <a-cone position="23 6 -55" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -57" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -59" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -61" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -63" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -65" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+
+              <a-cylinder position="23 4.75 -59" radius=".2" height="12" src="water blue.png" rotation="0 90 90" repeat="1 12"></a-cylinder>
+              <a-cylinder position="23 3.25 -59" radius=".2" height="12" src="water blue.png" rotation="0 90 90" repeat="1 12"></a-cylinder>
+
+            </a-entity>
+
+            <a-entity position="-46 0 0">
+              <a-cylinder position="23 4 -55" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -57" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -59" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -61" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -63" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -65" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+
+              <a-cone position="23 6 -55" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -57" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -59" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -61" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -63" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -65" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+
+              <a-cylinder position="23 4.75 -59" radius=".2" height="12" src="water blue.png" rotation="0 90 90" repeat="1 12"></a-cylinder>
+              <a-cylinder position="23 3.25 -59" radius=".2" height="12" src="water blue.png" rotation="0 90 90" repeat="1 12"></a-cylinder>
+
+            </a-entity>
+
+            <a-entity position="-46 0 -30">
+              <a-cylinder position="23 4 -55" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -57" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -59" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -61" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -63" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -65" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+
+              <a-cone position="23 6 -55" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -57" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -59" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -61" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -63" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -65" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+
+              <a-cylinder position="23 4.75 -61" radius=".2" height="12" src="water blue.png" rotation="0 90 90" repeat="1 12"></a-cylinder>
+              <a-cylinder position="23 3.25 -61" radius=".2" height="12" src="water blue.png" rotation="0 90 90" repeat="1 12"></a-cylinder>
+
+            </a-entity>
+
+           <a-entity position="0 0 -30">
+              <a-cylinder position="23 4 -55" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -57" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -59" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -61" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -63" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+              <a-cylinder position="23 4 -65" radius=".5" height="3" src="arena gold.png"></a-cylinder>
+
+              <a-cone position="23 6 -55" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -57" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -59" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -61" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -63" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+              <a-cone position="23 6 -65" src="obsidian.png" radius-bottom=".65" height="1.5"></a-cone>
+
+              <a-cylinder position="23 4.75 -61" radius=".2" height="12" src="water blue.png" rotation="0 90 90" repeat="1 12"></a-cylinder>
+              <a-cylinder position="23 3.25 -61" radius=".2" height="12" src="water blue.png" rotation="0 90 90" repeat="1 12"></a-cylinder>
+
+            </a-entity>
+
+
+
+
+          </a-entity>
+          
+        </a-entity>
+
+
+        <!--Back Sect Entrance-->
+        <a-entity position="0 0 -150" rotation="0 180 0">
+          <!--Right pillars-->
+          <a-entity>
+            <a-box position="12 12.2 -25" depth="5" height="25" width="7.5" src="wood2.png"></a-box>
+
+            <!--Windows-->
+            <a-entity>
+              <a-image src="window.png" height="3" width="3" position="14 16.5 -22.3" ></a-image>
+              <a-image src="window.png" height="3" width="3" position="10.25 16.5 -22.3" ></a-image>
+              <a-image src="window.png" height="6" width="3" position="12 8 -22.1" rotation="0 0 90" ></a-image>
+            </a-entity>
+
+            <!--Right Side Tiles-->
+            <a-entity>
+
+              <!--Top Small Tiles(front)-->
+              <a-entity>
+                  <a-box position="12 19 -21.5" rotation="-35 0 0" depth=".2" width="7.5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="13 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="14 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="11 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="10 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="9 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="8 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="15 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="16 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+              </a-entity>
+
+              <!--Top Small Tiles(left)-->
+              <a-entity position="-4.75 0 -3.5">
+                  <a-box position="12 19 -21.5" rotation="-35 -90 0" depth=".2" width="5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -19.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -20.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -22.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -23.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  
+              </a-entity>
+
+              <!--Top Small Tiles(right)-->
+              <a-entity position="4.75 0 -3.5">
+                  <a-box position="12 19 -21.5" rotation="-35 90 0" depth=".2" width="5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -19.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -20.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -22.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -23.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  
+              </a-entity>
+
+              <!--Bottom Small Tiles-->
+              <a-entity position="0 -7.5 0">
+                  <a-box position="12 19 -21.5" rotation="-35 0 0" depth=".2" width="7.5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="13 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="14 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="11 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="10 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="9 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="8 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="15 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="16 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+              </a-entity>
+
+              <!--Bottom Small Tiles(left)-->
+              <a-entity position="-4.75 -7.5 -3.5">
+                  <a-box position="12 19 -21.5" rotation="-35 -90 0" depth=".2" width="5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -19.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -20.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -22.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -23.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  
+              </a-entity>
+
+              <!--Bottom Small Tiles(right)-->
+              <a-entity position="4.75 -7.5 -3.5">
+                  <a-box position="12 19 -21.5" rotation="-35 90 0" depth=".2" width="5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -19.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -20.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -22.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -23.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  
+              </a-entity>
+
+
+              <!--Ball-->
+              <a-sphere position="12 29 -25" radius="5" src="lightning.png">
+            </a-entity>
+
+            <!--Backside-->
+            <a-entity>
+              <a-image position="12 12.2 -28" width="5" height="21" src="leave sect.png" rotation="0 180 0" color="black"></a-image>
+            </a-entity>
+
+          </a-entity>
+
+          <!--Left pillars-->
+          <a-entity>
+            <a-box position="-12 12.2 -25" depth="5" height="25" width="7.5" src="wood2.png"></a-box>
+
+            <!--Windows-->
+            <a-entity position="-24 0 0">
+              <a-image src="window.png" height="3" width="3" position="14 16.5 -22.3" ></a-image>
+              <a-image src="window.png" height="3" width="3" position="10.25 16.5 -22.3" ></a-image>
+              <a-image src="window.png" height="6" width="3" position="12 8 -22.1" rotation="0 0 90" ></a-image>
+            </a-entity>
+
+            <!--Left Side Tiles-->
+            <a-entity position="-24 0 0">
+
+              <!--Top Small Tiles(front)-->
+              <a-entity>
+                  <a-box position="12 19 -21.5" rotation="-35 0 0" depth=".2" width="7.5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="13 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="14 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="11 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="10 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="9 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="8 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="15 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="16 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+              </a-entity>
+
+              <!--Top Small Tiles(left)-->
+              <a-entity position="-4.75 0 -3.5">
+                  <a-box position="12 19 -21.5" rotation="-35 -90 0" depth=".2" width="5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -19.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -20.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -22.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -23.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  
+              </a-entity>
+
+              <!--Top Small Tiles(right)-->
+              <a-entity position="4.75 0 -3.5">
+                  <a-box position="12 19 -21.5" rotation="-35 90 0" depth=".2" width="5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -19.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -20.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -22.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -23.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  
+              </a-entity>
+
+              <!--Bottom Small Tiles-->
+              <a-entity position="0 -7.5 0">
+                  <a-box position="12 19 -21.5" rotation="-35 0 0" depth=".2" width="7.5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="13 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="14 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="11 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="10 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="9 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="8 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="15 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="16 19 -21.5" rotation="-35 0 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+              </a-entity>
+
+              <!--Bottom Small Tiles(left)-->
+              <a-entity position="-4.75 -7.5 -3.5">
+                  <a-box position="12 19 -21.5" rotation="-35 -90 0" depth=".2" width="5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -19.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -20.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -22.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -23.5" rotation="-35 -90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  
+              </a-entity>
+
+              <!--Bottom Small Tiles(right)-->
+              <a-entity position="4.75 -7.5 -3.5">
+                  <a-box position="12 19 -21.5" rotation="-35 90 0" depth=".2" width="5" height="4" src="brown.png"></a-box>
+                  <a-cylinder position="12 19 -19.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -20.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -21.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -22.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  <a-cylinder position="12 19 -23.5" rotation="-35 90 0" src="cyan.png" height="4" radius=".25"></a-cylinder>
+                  
+              </a-entity>
+
+
+              <!--Ball-->
+              <a-sphere position="12 29 -25" radius="5" src="lightning.png">
+            </a-entity>
+
+            <!--Backside-->
+            <a-entity position="-24.5 0 0">
+              <a-image position="12.5 12.5 -28" width="5" height="21" src="safe return.png" rotation="0 180 0" color="black"></a-image>
+            </a-entity>
+
+            <!--Gates-->
+            <a-image position="-45 6.5 -29" src="front wall.png" height="20" width="60" repeat="15 1" color="#654321"></a-image>
+            <a-image position="45 6.5 -29" src="front wall.png" height="20" width="60" repeat="15 1" color="#654321"></a-image>
+
+          </a-entity>
+
+          <!--Middle Entrance-->
+          <a-entity>
+            <a-box position="-5 7 -24" height="15" width="1" depth="1" src="brown.png"></a-box>
+            <a-box position="5 7 -24" height="15" width="1" depth="1" src="brown.png"></a-box>
+            <a-box position="0 15 -24" height="5" width="14" depth="1" src="brown.png"></a-box>
+            <a-image src="sect.png" color="black" position="0 15 -23.4" height="5" width="14"></a-image>
+            <a-image src="sect.png" color="black" position="0 15 -24.7" height="5" width="14" rotation="0 180 0"></a-image>
+          </a-entity>
+
+          <!--Entrance Flower Left Side-->
+          <a-entity>
+            <a-entity position="-20 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-25 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-30 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-35 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-40 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-45 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-50 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-55 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-60 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-65 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-70 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+
+          </a-entity>
+
+          <!--Entrance Flower Right Side-->
+          <a-entity position="90 0 0">
+            <a-entity position="-20 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-25 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-30 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-35 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-40 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-45 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-50 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-55 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-60 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-65 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+            <a-entity position="-70 .5 -21">
+              <!--Flower Pot-->
+              <a-entity>
+                <a-cylinder position="0 0 -2" height=".25" radius=".5" src="flower pot top.png"></a-cylinder>
+                <a-cylinder position="0 -.3 -2" height=".5" radius=".3" color="#00A36C"></a-cylinder>
+              </a-entity>
+
+              <!--Branch and Flower-->
+              <a-entity>
+                <a-box position="0 1 -2" depth=".2" height="3" width=".2" color="#654321"></a-box>
+
+                <a-cylinder position="-.17 .5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 .7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 1 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 1.2 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position="-.17 1.5 -2" height=".5" radius=".05" color="green" rotation="0 0 25"></a-cylinder>
+                <a-sphere color="pink" position="-.25 1.7 -2" radius=".12"></a-sphere>
+
+                <a-cylinder position=".17 2 -2" height=".5" radius=".05" color="green" rotation="0 0 -25"></a-cylinder>
+                <a-sphere color="pink" position=".25 2.2 -2" radius=".12"></a-sphere>
+              </a-entity>
+
+              <!--Leaves-->
+              <a-entity>
+                <a-sphere color="red" position="-.5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position=".5 2.9 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 3.5 -2" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -1.75" radius=".5"></a-sphere>
+                <a-sphere color="red" position="0 2.9 -2.25" radius=".5"></a-sphere>
+              </a-entity>
+              
+            </a-entity>
+
+          </a-entity>
+        </a-entity>
+
+
+        <!--Spiritual Medicine Mountain Wall-->
+        <a-entity>
+          <!--Walls-->
+          <a-box position="-62.5 15 -162.5" depth="1" width="75" height="30" src="stone wall.png" repeat="10 2"></a-box>
+          <a-box position="62.5 15 -162.5" depth="1" width="75" height="30" src="stone wall.png" repeat="10 2"></a-box>
+          <!--Wall Tops-->
+          <a-entity>
+            <a-box position="-97 32 -162.5" src="stone wall.png" height="5" width="5" depth="5"></a-box>
+            <a-box position="-87 32 -162.5" src="stone wall.png" height="5" width="5" depth="5"></a-box>
+            <a-box position="-77 32 -162.5" src="stone wall.png" height="5" width="5" depth="5"></a-box>
+            <a-box position="-67 32 -162.5" src="stone wall.png" height="5" width="5" depth="5"></a-box>
+            <a-box position="-57 32 -162.5" src="stone wall.png" height="5" width="5" depth="5"></a-box>
+            <a-box position="-47 32 -162.5" src="stone wall.png" height="5" width="5" depth="5"></a-box>
+            <a-box position="-37 32 -162.5" src="stone wall.png" height="5" width="5" depth="5"></a-box>
+          </a-entity>
+          <a-entity>
+            <a-box position="97 32 -162.5" src="stone wall.png" height="5" width="5" depth="5"></a-box>
+            <a-box position="87 32 -162.5" src="stone wall.png" height="5" width="5" depth="5"></a-box>
+            <a-box position="77 32 -162.5" src="stone wall.png" height="5" width="5" depth="5"></a-box>
+            <a-box position="67 32 -162.5" src="stone wall.png" height="5" width="5" depth="5"></a-box>
+            <a-box position="57 32 -162.5" src="stone wall.png" height="5" width="5" depth="5"></a-box>
+            <a-box position="47 32 -162.5" src="stone wall.png" height="5" width="5" depth="5"></a-box>
+            <a-box position="37 32 -162.5" src="stone wall.png" height="5" width="5" depth="5"></a-box>
+          </a-entity>
+
+          <!--Tiles-->
+          <a-entity>
+                  <a-box position="0 37.5 -155" rotation="-35 0 0" depth=".2" width="60" height="15" src="obsidian.png"></a-box>
+                  <a-cylinder position="0 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="5 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="10 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="15 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="20 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="25 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="30 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="-5 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="-10 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="-15 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="-20 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="-25 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="-30 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+
+
+
+
+          </a-entity>
+
+          <a-entity rotation="0 180 0" position="0 0 -321">
+                  <a-box position="0 37.5 -155" rotation="-35 0 0" depth=".2" width="60" height="15" src="obsidian.png"></a-box>
+                  <a-cylinder position="0 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="5 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="10 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="15 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="20 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="25 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="30 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="-5 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="-10 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="-15 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="-20 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="-25 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+                  <a-cylinder position="-30 37.5 -155" rotation="-35 0 0" src="red.png" height="15" radius="1"></a-cylinder>
+
+          </a-entity>
+
+
+          <!--Wall Entrance-->
+          <a-box position="-18 21 -160.5" depth="3" width="21" height="45" src="stone wall.png" repeat="2 2"></a-box>
+          <a-box position="18 21 -160.5" depth="3" width="21" height="45" src="stone wall.png" repeat="2 2"></a-box>
+          <a-box position="0 31 -160.5" depth="3" width="15" height="25" src="stone wall.png" ></a-box>
+
+          <a-box position="0 24 -159" depth="2" width="25" height="7" src="brown.png" ></a-box>
+          
+
+        </a-entity>
+
+
+          <!--Grassland Flooring-->
+        <a-entity>
+            <a-box position="0 -0.2 -147" rotation="90 0 0" depth=".3" width="150" height="30" src="grass2.png" repeat="3 1"></a-box>
+        </a-entity>
+        
+
+
+
+      </a-entity>
+
+      <!--Divine Realm-->
+      <a-entity position="0 2001 0">
+        <a-image src="angel.png" position="0 75 -100" width="200" height="100" rotation="15 0 0"></a-image>
+        <a-ring id="ring" src="arena gold.png" position="0 75 100" radius-inner="25" radius-outer="50" height="25"></a-ring>
+        <a-image src="waterfall.png" position="200 25 0" width="200" height="125" rotation="0 90 0"></a-image>
+        <a-image src="horse1.png" position="-50 25 100" width="75" height="50" rotation="15 180 0"></a-image>
+        <a-image src="horse2.png" position="50 25 100" width="75" height="50" rotation="15 180 0"></a-image>
+        <!--Divine Realm Flooring-->
+        <a-entity>
+          <a-plane src="Divine Flooring.png" position="0 0 0" width="5" height="5" rotation="-90 0 0" repeat="2 4"></a-plane>
+          <a-plane src="grass road.png" position="0 0 -7.5" width="2" height="10" rotation="-90 0 0" repeat="1 5"></a-plane>
+          <a-plane src="grass road.png" position="7.5 0 0" width="2" height="10" rotation="-90 90 0" repeat="1 5"></a-plane>
+          <a-plane src="grass road.png" position="-7.5 0 0" width="2" height="10" rotation="-90 90 0" repeat="1 5"></a-plane>
+          <a-plane src="grass road.png" position="0 0 7.5" width="2" height="10" rotation="-90 0 0" repeat="1 5"></a-plane>
+
+          <a-plane src="divine grass.png" position="6.25 -.02 -6.25" width="12.5" height="12.5" rotation="-90 0 0" repeat="1 1"></a-plane>
+          <a-plane src="divine grass.png" position="6.25 -.02 6.25" width="12.5" height="12.5" rotation="-90 0 0" repeat="1 1"></a-plane>
+          <a-plane src="divine grass.png" position="-6.25 -.02 6.25" width="12.5" height="12.5" rotation="-90 0 0" repeat="1 1"></a-plane>
+          <a-plane src="divine grass.png" position="-6.25 -.02 -6.25" width="12.5" height="12.5" rotation="-90 0 0" repeat="1 1"></a-plane>
+
+          <a-plane src="divine dirt.png" position="6.25 0 -6.25" width="5" height="5" rotation="-90 0 0"></a-plane>
+          <a-plane src="divine dirt.png" position="-6.25 0 6.25" width="5" height="5" rotation="-90 0 0"></a-plane>
+          <a-plane src="divine dirt.png" position="-6.25 0 -6.25" width="5" height="5" rotation="-90 0 0"></a-plane>
+        </a-entity>
+        
+
+        <!--Teleportion Building-->
+        <a-entity position="6 0 6" rotation="0 -135 0">
+          <!--Column-->
+          <a-entity position="-3 0 3">
+            <a-box src="whitePrism.png" position="0 0 0" height=".25" width="1" depth="1"></a-box>
+            <a-cylinder src="whiteGold.png" position="0 1.5 0" height="3" radius=".4" ></a-cylinder>
+            <a-box src="whitePrism.png" position="0 3 0" height=".25" width="1" depth="1"></a-box>
+            <a-dodecahedron id="tCrystal" src="fireGolds.png" position="0 4 0" radius=".5"></a-dodecahedron>
+            
+          </a-entity>
+
+          <!--Column 2-->
+          <a-entity position="3 0 -3">
+            <a-box src="whitePrism.png" position="0 0 0" height=".25" width="1" depth="1"></a-box>
+            <a-cylinder src="whiteGold.png" position="0 1.5 0" height="3" radius=".4" ></a-cylinder>
+            <a-box src="whitePrism.png" position="0 3 0" height=".25" width="1" depth="1"></a-box>
+            <a-dodecahedron id="tCrystal2" src="fireGolds.png" position="0 4 0" radius=".5"></a-dodecahedron>
+          </a-entity>
+
+          <!--Column 3-->
+          <a-entity position="3 0 3">
+            <a-box src="whitePrism.png" position="0 0 0" height=".25" width="1" depth="1"></a-box>
+            <a-cylinder src="whiteGold.png" position="0 1.5 0" height="3" radius=".4" ></a-cylinder>
+            <a-box src="whitePrism.png" position="0 3 0" height=".25" width="1" depth="1"></a-box>
+            <a-dodecahedron id="tCrystal3" src="fireGolds.png" position="0 4 0" radius=".5"></a-dodecahedron>
+          </a-entity>
+
+          <!--Column 4-->
+          <a-entity position="-3 0 -3">
+            <a-box src="whitePrism.png" position="0 0 0" height=".25" width="1" depth="1"></a-box>
+            <a-cylinder src="whiteGold.png" position="0 1.5 0" height="3" radius=".4" ></a-cylinder>
+            <a-box src="whitePrism.png" position="0 3 0" height=".25" width="1" depth="1"></a-box>
+            <a-dodecahedron id="tCrystal4" src="fireGolds.png" position="0 4 0" radius=".5"></a-dodecahedron>
+          </a-entity>
+
+          <!--Teleportion Building-->
+          <a-entity>
+            <a-box src="blueMarble.jpg" position="-2 1.5 0" height="3" depth=".2" width="3" rotation="0 90 0"></a-box>
+            <a-box src="blueMarble.jpg" position="2 1.5 0" height="3" depth=".2" width="3" rotation="0 90 0"></a-box>
+            <a-box src="blueMarble.jpg" position="0 1.5 -1.5" height="3" depth=".2" width="4.2" rotation="0 0 0"></a-box>
+            <a-box src="blueMarble.jpg" position="0 3 0" height="3" depth=".2" width="4.2" rotation="90 0 0"></a-box>
+            <a-box src="blueMarble.jpg" position="1.3 1.5 1.4" height="3" depth=".2" width="1.25" rotation="0 0 0"></a-box>
+            <a-box src="blueMarble.jpg" position="-1.3 1.5 1.4" height="3" depth=".2" width="1.25" rotation="0 0 0"></a-box>
+
+            <a-image id="portal11" position="0 1.25 -.75" src="portal11.png" width="3" height="3"></a-image>
+
+          </a-entity>
+
+        </a-entity>
+
+        <!--Spiritual Medicine Farm-->
+        <a-entity>
+        </a-entity>
+
+
+      </a-entity>
+
+
+
+      
+
+
+      <!--Sky/Realms-->
+      <a-sky src="MGA background.png" ></a-sky>
+      <a-sky src="clear sky.png" position="0 2000 0"></a-sky>
+      <a-sky src="hell.jpeg" position="250 -2000 250"></a-sky>
+      <a-sky src="space.jpg" radius="5000"></a-sky>
+    </a-scene>
+  </body>
+</html>

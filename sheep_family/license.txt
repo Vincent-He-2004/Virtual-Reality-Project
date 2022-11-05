@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sheep Family
+* source:	https://sketchfab.com/3d-models/sheep-family-bf346177ad9b43fe8226c473ca13eec1
+* author:	JessSwynn (https://sketchfab.com/JessSwynn)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sheep Family" (https://sketchfab.com/3d-models/sheep-family-bf346177ad9b43fe8226c473ca13eec1) by JessSwynn (https://sketchfab.com/JessSwynn) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

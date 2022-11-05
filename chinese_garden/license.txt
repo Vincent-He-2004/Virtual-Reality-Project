@@ -1,0 +1,11 @@
+Model Information:
+* title:	Chinese Garden
+* source:	https://sketchfab.com/3d-models/chinese-garden-695e78a7ccc945acbda9f9f20ef7dba3
+* author:	scottdeng (https://sketchfab.com/scottdeng)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Chinese Garden" (https://sketchfab.com/3d-models/chinese-garden-695e78a7ccc945acbda9f9f20ef7dba3) by scottdeng (https://sketchfab.com/scottdeng) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
